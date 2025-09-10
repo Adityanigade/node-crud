@@ -1,11 +1,19 @@
-const http = require("http");
+const express = require("express");
 
-// Server Set up
-const server = http.createServer((req, res)=>{
-    console.log(`I have received the request...`);
-    console.log(`Now processing request...`);
-    res.end("Hello This is my Response!!!");
-});
-server.listen(8080, ()=>{
+const app = express();
+
+app.listen(8080, ()=>{
     console.log(`Server started on post: 8080 and ready to serve the request.`);
+});
+
+app.get('/', (request, response)=>{
+    response.send(`Response from GET method for url /`);
+});
+
+app.get('/home', (request, response)=>{
+    response.status(200);
+    response.send(`Response from GET method for url /home`);
+});
+app.post('/create', (request, response)=>{
+    response.send(`Response from GET method for url /create`);
 });
